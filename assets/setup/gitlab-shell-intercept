@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Instructions:
+# This script, along with the gitlab-shell script allows one to forward
+# SSH queries from the host machine to the container.
+#
+# The host machine will use the authorized keys from Gitlab and forward the
+# connection to the container using a single SSH key. That key is configured
+# to run a gitlab-shell-intercept script in the container that restores the
+# connection arguments to what gitlab-shell expects and calls it.
+# 
+# To set it up, the host machine has to have an account to receive git SSH
+# connections. The gitlab-shell script needs to reside in the same location
+# as the original gitlab-shell command in the container. The UID and GID need
+# to match between the two computers.
+#
+# Example, if user is "git":
+# /home/git/gitlab-shell/bin/gitlab-shell
+# Symlink the .ssh/authorized_keys from the container data directory to:
+# /home/git/.ssh/authorized_keys
+# Create a ssh-keypair on the host machine under the git account.
+# Add to authorized_keys:
+# command="/home/git/gitlab-shell/bin/gitlab-shell-intercept",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa PUBKEY...
+# The private key needs to be referenced from the gitlab-shell script above.
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+GITLAB_SHELL_PATH=${DIR}/gitlab-shell
+KEY=$(echo ${SSH_ORIGINAL_COMMAND}|cut -d " " -f1)
+SSH_CMD=$(echo ${SSH_ORIGINAL_COMMAND}|cut -d " " -f2-)
+
+SSH_ORIGINAL_COMMAND="${SSH_CMD}" ${GITLAB_SHELL_PATH} ${KEY}

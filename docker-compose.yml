@@ -5,12 +5,27 @@ postgresql:
     - DB_PASS=secretpassword
     - DB_NAME=gitlabhq_production
 gitlab:
-  image: sameersbn/gitlab:7.10.1
+  environment:
+    - GITLAB_RELATIVE_URL_ROOT=/gitlab
+    - GITLAB_HOST=localhost
+    - GITLAB_PORT=443
+    - GITLAB_ROOT_PASSWORD=password
+    - USERMAP_UID=120
+    - USERMAP_GID=120
+    - GITLAB_EMAIL=example@example.com
+    - GITLAB_EMAIL_DISPLAY_NAME=Gitlab
+    - GITLAB_EMAIL_ENABLED=true
+    - GITLAB_BACKUPS=daily
+#    - GITLAB_BACKUP_EXPIRY=604800
+    - GITLAB_HTTPS=true
+  image: hordur/gitlab:latest
   links:
    - redis:redisio
    - postgresql:postgresql
   ports:
    - "10080:80"
    - "10022:22"
+  volumes:
+   - /tmp/gitlab:/home/git/data
 redis:
   image: sameersbn/redis:latest

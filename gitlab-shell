@@ -1,0 +1,5 @@
+#!/bin/bash
+#command="/home/{{GITLAB_USER}}/gitlab-shell/bin/gitlab-shell key-1",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa KEY user
+GITLAB_SSH_PORT=10022
+
+ssh -i ${HOME}/.ssh/id_rsa_docker_gitlab -p ${GITLAB_SSH_PORT} ${GITLAB_USER}@localhost $1 $SSH_ORIGINAL_COMMAND
