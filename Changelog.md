@@ -1,5 +1,106 @@
 # Changelog
 
+This file only reflects the changes that are made in the the docker image. Please refer to the upstream GitLab [CHANGELOG](https://github.com/gitlabhq/gitlabhq/blob/master/CHANGELOG) for the list of changes in GitLab.
+
+**8.0.2**
+- gitlab: upgrade to CE v.8.0.2
+- added `IMAP_STARTTLS` parameter, defaults to `false`
+- expose oauth parameters for crowd server
+
+**8.0.0**
+- set default value of `DB_TYPE` to `postgres`
+- added sample Kubernetes rc and service description files
+- expose `GITLAB_BACKUP_ARCHIVE_PERMISSIONS` parameter
+- gitlab: upgrade to CE v.8.0.0
+- added `GITLAB_SECRETS_DB_KEY_BASE` parameter
+- added `GITLAB_NOTIFY_ON_BROKEN_BUILDS` and `GITLAB_NOTIFY_PUSHER` parameters
+- added options to email IMAP and reply by email feature
+- set value of `GITLAB_EMAIL` to `SMTP_USER` if defined, else default to `example@example.com`
+- removed `GITLAB_ROBOTS_OVERRIDE` parameter. Override default `robots.txt` if `GITLAB_ROBOTS_PATH` exists.
+- added CI redirection using `GITLAB_CI_HOST` parameter
+
+**7.14.3**
+- gitlab: upgrade to CE v.7.14.3
+
+**7.14.2**
+- Apply grsecurity policies to nodejs binary #394
+- Fix broken emojis post migration #196
+- gitlab-shell: upgrade to v.2.6.5
+- gitlab: upgrade to CE v.7.14.2
+
+**7.14.1**
+- gitlab: upgrade to CE v.7.14.1
+
+**7.14.0**
+- gitlab-shell: upgrade to v.2.6.4
+- gitlab: upgrade to CE v.7.14.0
+
+**7.13.5**
+- gitlab: upgrade to CE v.7.13.5
+
+**7.13.4**
+- gitlab: upgrade to CE v.7.13.4
+
+**7.13.3**
+- gitlab: upgrade to CE v.7.13.3
+
+**7.13.2**
+- gitlab: upgrade to CE v.7.13.2
+
+**7.13.1**
+- gitlab: upgrade to CE v.7.13.1
+
+**7.13.0**
+- expose SAML OAuth provider configuration
+- expose `OAUTH_AUTO_SIGN_IN_WITH_PROVIDER` configuration
+- gitlab: upgrade to CE v.7.13.0
+
+**7.12.2-2**
+- enable persistence `.secret` file used in 2FA
+
+**7.12.2-1**
+- fixed gitlab:backup:restore raketask
+
+**7.12.2**
+- gitlab: upgrade to CE v.7.12.2
+
+**7.12.1**
+- gitlab: upgrade to CE v.7.12.1
+
+**7.12.0**
+- added `SMTP_TLS` configuration parameter
+- gitlab: upgrade to CE v.7.12.0
+- added `OAUTH_AUTO_LINK_LDAP_USER` configuration parameter
+
+**7.11.4-1**
+- base image update to fix SSL vulnerability
+
+**7.11.4**
+- gitlab: upgrade to CE v.7.11.4
+
+**7.11.3**
+- gitlab: upgrade to CE v.7.11.3
+
+**7.11.2**
+- gitlab: upgrade to CE v.7.11.2
+
+**7.11.0**
+- init: added `SIDEKIQ_MEMORY_KILLER_MAX_RSS` configuration option
+- init: added `SIDEKIQ_SHUTDOWN_TIMEOUT` configuration option
+- gitlab-shell: upgrade to v.2.6.3
+- gitlab: upgrade to CE v.7.11.0
+- init: removed `GITLAB_PROJECTS_VISIBILITY` ENV parameter
+
+**7.10.4**
+- gitlab: upgrade to CE v.7.10.4
+
+**7.10.3**
+- gitlab: upgrade to CE v.7.10.3
+
+**7.10.2**
+- init: added support for remote AWS backups
+- gitlab: upgrade to CE v.7.10.2
+
 **7.10.1**
 - gitlab: upgrade to CE v.7.10.1
 
